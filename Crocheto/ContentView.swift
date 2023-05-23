@@ -22,49 +22,51 @@ struct ContentView: View {
                 Button(action: addItem) {
                     Label("Add Project", systemImage: "plus")
                         .padding()
-                }.tint(CrochetoColors.white)
-                    .background(CrochetoColors.green)
+                }
+                .tint(CrochetoColors.white)
+                .background(CrochetoColors.green)
+                .cornerRadius(15)
+                .padding()
                 
-                    .cornerRadius(15)
-                    .padding()
                 List {
                     ForEach(items) { item in
-                        Section {
-                            VStack {
-                                NavigationLink {
-                                    newGalleryProject()
-                                } label: {
-                                    Image(systemName: "globe")
-                                        .listRowBackground(Color.pink)
-                                        .padding()
-                                    Spacer()
-                                    Text("Title")
-                                        .lineLimit(1)
-                                        .bold()
-                                    Spacer()
-                                    Text("Project description that can extend multiple lines")
-                                        .lineLimit(2)
-                                        .padding()
-                                }.foregroundColor(CrochetoColors.green)
-                            }.overlay(
+                        NavigationLink {
+                            newGalleryProject()
+                        } label: {
+                            HStack {
+                                Image(systemName: "globe")
+                                    .listRowBackground(Color.pink)
+                                    .padding()
+                                Spacer()
+                                Text("Title")
+                                    .lineLimit(1)
+                                    .bold()
+                                Spacer()
+                                Text("Project description that can extend multiple lines")
+                                    .lineLimit(2)
+                                    .padding()
+                            }
+                            .background(CrochetoColors.white)
+                            .overlay(
                                 RoundedRectangle(cornerRadius: 10, style: .circular).stroke(CrochetoColors.green, lineWidth: 10)
                             )
-                        }.listRowInsets(.init(top: 0, leading: 0, bottom: 0, trailing: 0))
+                            .padding(.vertical)
+                        }
+                        .foregroundColor(CrochetoColors.green)
+                        .listRowBackground(CrochetoColors.darkGreen)
                     }
                     .onDelete(perform: deleteItems)
                     .listRowBackground(CrochetoColors.white)
                     
-                }.listStyle(.insetGrouped)
-                
-//                .shadow(color: CrochetoColors.lightGreen, radius: 10)
-//                        width: Text("Title")
-                    .lineLimit(1)
-                    .bold()
+                }
+                .listStyle(.insetGrouped)
+                .lineLimit(1)
+                .bold()
             }
-                .background(CrochetoColors.darkGreen)
-                .scrollContentBackground(.hidden)
-                
-                
+            .background(CrochetoColors.darkGreen)
+            .scrollContentBackground(.hidden)
+            
+            
         }
     }
     
