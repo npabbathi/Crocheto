@@ -8,21 +8,52 @@
 import SwiftUI
 
 struct PatternBuilder: View {
-    @State private var rows = [Stitch]()
+    @State private var rows = [Row]()
     @State private var numRows = 0
+    
+    @State private var currentStitches = [Stitch]()
+    private var currentSitchesPattern: String {
+        var pattern = ""
+        
+        var currentStreak = 1
+        if currentStitches.count != 0 {
+            for i in 0 ..< currentStitches.count - 1 {
+                if (currentStitches[i].getName() != currentStitches[i + 1].getName()) {
+                    if (currentStreak != 1) {
+                        pattern += "\(currentStitches[i].getAbbreviation()) \(currentStreak), "
+                    } else {
+                        pattern += "\(currentStitches[i].getAbbreviation()), "
+                    }
+                        currentStreak = 1
+                } else {
+                    currentStreak += 1
+                }
+            }
+            if (currentStreak != 1) {
+                pattern += "\(currentStitches[currentStitches.count - 1].getAbbreviation()) \(currentStreak)"
+            } else {
+                pattern += "\(currentStitches[currentStitches.count - 1].getAbbreviation())"
+            }
+        }
+        return pattern
+    }
     
     @State private var selectedStitchType = "Chain"
     @State private var selectedNumStitches = 1
     
     
-    private var stitchTypes = ["Chain", "Single Crochet", "Double Crochet"]
+    private var stitchTypes = ["Chain", "Single Crochet", "Double Crochet", "Increase", "Decrease"]
     private var stitchTypeAbbreviations = ["Chain" : "ch",
                                   "Single Crochet" : "sc",
-                                  "Double Crochet" : "dc"]
+                                  "Double Crochet" : "dc",
+                                           "Increase" : "inc",
+                                           "Decrease" : "dec"]
     
-    private var stitchTypeCounts = ["Chain" : 1,
-                                  "Single Crochet" : 1,
-                                  "Double Crochet" : 1]
+    private var stitchTypeCounts = ["Chain" : 0,
+                                  "Single Crochet" : 0,
+                                  "Double Crochet" : 0,
+                                    "Increase" : 1,
+                                    "Decrease" : -1]
     
     var body: some View {
         ZStack {
@@ -31,15 +62,21 @@ struct PatternBuilder: View {
             VStack {
                 List {
                     Section {
-                        Text("Rows: \(numRows) \(selectedNumStitches)")
+                        Text("Rows: \(numRows)")
                     }
-                    ForEach(rows) { stitch in
-                        Text(stitch.getAbbreviation())
+                    ForEach(rows) { row in
+                        Text(row.getPattern())
                     }
                 }
                 .scrollContentBackground(.hidden)
+                
+                
                 Divider()
                     .overlay(CrochetoColors.darkGreen)
+                
+                Text("Current Row:")
+                Text(currentSitchesPattern)
+                
                 HStack {
                     Picker("stitch types", selection: $selectedStitchType) {
                         ForEach(stitchTypes, id: \.self) { stitchType in
@@ -55,13 +92,23 @@ struct PatternBuilder: View {
                     }
                     .pickerStyle(.wheel)
                 }
-                
-                Button("add") {
-                    for _ in 0 ..< selectedNumStitches {
-                        rows.append(Stitch(name: selectedStitchType, abbreviation: stitchTypeAbbreviations[selectedStitchType] ?? "??", increaseAmount: stitchTypeCounts[selectedStitchType] ?? 0))
+                HStack {
+                    Button("add stitch") {
+                        for _ in 0 ..< selectedNumStitches {
+                            currentStitches.append(Stitch(name: selectedStitchType, abbreviation: stitchTypeAbbreviations[selectedStitchType] ?? "??", increaseAmount: stitchTypeCounts[selectedStitchType] ?? 0))
+                        }
                     }
+                    .buttonStyle(.bordered)
+                    
+                    Button("add row") {
+                        if currentStitches.count != 0 {
+                            rows.append(Row(stitches: currentStitches))
+                            currentStitches = [Stitch]()
+                            numRows += 1
+                        }
+                    }
+                    .buttonStyle(.bordered)
                 }
-                .buttonStyle(.bordered)
             }
         }
     }
