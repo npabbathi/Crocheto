@@ -11,31 +11,79 @@ struct PatternBuilder: View {
     @State private var rows = [Row]()
     @State private var numRows = 0
     
-    @State private var currentStitches = [Stitch]()
-    private var currentSitchesPattern: String {
+    @State private var currentRow = [Group]()
+    @State private var currentGroup = [Stitch]()
+    private var currentSitchesPattern: String { //NOT WORKING
         var pattern = ""
         
+        if currentRow.count > 1 {
+            for i in stride(from: currentRow.count - 1, to: 0, by: -1) {
+                if currentRow[i].getStitches() == currentRow[i - 1].getStitches() {
+                    currentRow[i - 1].incRepeats(currentRow[i].getRepeats())
+                    currentRow.remove(at: i)
+                }
+            }
+            
+            if currentRow[1].getStitches() == currentRow[0].getStitches() {
+                currentRow[0].incRepeats(currentRow[1].getRepeats())
+                currentRow.remove(at: 1)
+            }
+        }
+        
+        for group in currentRow {
+            pattern += group.toString() + ", "
+        }
+        
+        return "ROW: " + pattern
+        //        var pattern = ""
+        //
+        //        var currentStreak = 1
+        //        if currentStitches.count != 0 {
+        //            for i in 0 ..< currentStitches.count - 1 {
+        //                if (currentStitches[i].getName() != currentStitches[i + 1].getName()) {
+        //                    if (currentStreak != 1) {
+        //                        pattern += "\(currentStitches[i].getAbbreviation()) \(currentStreak), "
+        //                    } else {
+        //                        pattern += "\(currentStitches[i].getAbbreviation()), "
+        //                    }
+        //                        currentStreak = 1
+        //                } else {
+        //                    currentStreak += 1
+        //                }
+        //            }
+        //            if (currentStreak != 1) {
+        //                pattern += "\(currentStitches[currentStitches.count - 1].getAbbreviation()) \(currentStreak)"
+        //            } else {
+        //                pattern += "\(currentStitches[currentStitches.count - 1].getAbbreviation())"
+        //            }
+        //        }
+        //        return pattern
+    }
+    
+    private var currentGroupPattern: String {
+        var groupPattern = currentGroup.count == 1 ? "" : "("
+        
         var currentStreak = 1
-        if currentStitches.count != 0 {
-            for i in 0 ..< currentStitches.count - 1 {
-                if (currentStitches[i].getName() != currentStitches[i + 1].getName()) {
+        if currentGroup.count != 0 {
+            for i in 0 ..< currentGroup.count - 1 {
+                if (currentGroup[i].getName() != currentGroup[i + 1].getName()) {
                     if (currentStreak != 1) {
-                        pattern += "\(currentStitches[i].getAbbreviation()) \(currentStreak), "
+                        groupPattern += "\(currentGroup[i].getAbbreviation()) \(currentStreak), "
                     } else {
-                        pattern += "\(currentStitches[i].getAbbreviation()), "
+                        groupPattern += "\(currentGroup[i].getAbbreviation()), "
                     }
-                        currentStreak = 1
+                    currentStreak = 1
                 } else {
                     currentStreak += 1
                 }
             }
             if (currentStreak != 1) {
-                pattern += "\(currentStitches[currentStitches.count - 1].getAbbreviation()) \(currentStreak)"
+                groupPattern += "\(currentGroup[currentGroup.count - 1].getAbbreviation()) \(currentStreak)"
             } else {
-                pattern += "\(currentStitches[currentStitches.count - 1].getAbbreviation())"
+                groupPattern += "\(currentGroup[currentGroup.count - 1].getAbbreviation())"
             }
         }
-        return pattern
+        return groupPattern + (currentGroup.count == 1 ? "" : ") x\(selectedRepeat)")
     }
     
     @State private var selectedStitchType = "Chain"
@@ -46,20 +94,20 @@ struct PatternBuilder: View {
     
     private var stitchTypes = ["Chain", "Single Crochet", "Double Crochet", "Increase", "Decrease"]
     private var stitchTypeAbbreviations = ["Chain" : "ch",
-                                  "Single Crochet" : "sc",
-                                  "Double Crochet" : "dc",
+                                           "Single Crochet" : "sc",
+                                           "Double Crochet" : "dc",
                                            "Increase" : "inc",
                                            "Decrease" : "dec"]
     
     private var stitchTypeCounts = ["Chain" : 0,
-                                  "Single Crochet" : 0,
-                                  "Double Crochet" : 0,
+                                    "Single Crochet" : 0,
+                                    "Double Crochet" : 0,
                                     "Increase" : 1,
                                     "Decrease" : -1]
     
     var body: some View {
         ZStack {
-            CrochetoColors.lightGreen
+            LinearGradient(colors: [CrochetoColors.lightGreen, CrochetoColors.white], startPoint: .top, endPoint: .bottom)
                 .ignoresSafeArea()
             VStack {
                 List {
@@ -80,15 +128,18 @@ struct PatternBuilder: View {
                     Text("Current Row:")
                     Spacer()
                     Button("+ row") {
-                        if currentStitches.count != 0 {
-                            rows.append(Row(stitches: currentStitches))
-                            currentStitches = [Stitch]()
+                        if currentRow.count != 0 {
+                            rows.append(Row(groups: currentRow))
+                            currentRow = [Group]()
                             numRows += 1
                         }
                     }
                     .buttonStyle(.bordered)
                 }
                 Text(currentSitchesPattern)
+                if grouped {
+                    Text(currentGroupPattern)
+                }
                 
                 HStack {
                     Picker("stitch types", selection: $selectedStitchType) {
@@ -117,12 +168,30 @@ struct PatternBuilder: View {
                 HStack {
                     Button("+ stitch") {
                         for _ in 0 ..< selectedNumStitches {
-                            currentStitches.append(Stitch(name: selectedStitchType, abbreviation: stitchTypeAbbreviations[selectedStitchType] ?? "??", increaseAmount: stitchTypeCounts[selectedStitchType] ?? 0))
+                            
+                            if grouped {
+                                currentGroup.append(Stitch(name: selectedStitchType, abbreviation: stitchTypeAbbreviations[selectedStitchType] ?? "??", increaseAmount: stitchTypeCounts[selectedStitchType] ?? 0))
+                            } else {
+                                currentGroup.append(Stitch(name: selectedStitchType, abbreviation: stitchTypeAbbreviations[selectedStitchType] ?? "??", increaseAmount: stitchTypeCounts[selectedStitchType] ?? 0))
+                                currentRow.append(Group(groupStitchs: currentGroup, numRepeat: 1))
+                                currentGroup = [Stitch]()
+                            }
                         }
                     }
                     .buttonStyle(.bordered)
                     
                     Toggle("Group stitches?", isOn: $grouped)
+                    
+                    if grouped {
+                        Button("+ group") {
+                            if currentGroup.count != 0 {
+                                currentRow.append(Group(groupStitchs: currentGroup, numRepeat: selectedRepeat))
+                                currentGroup = [Stitch]()
+                                grouped.toggle()
+                            }
+                        }
+                        .buttonStyle(.bordered)
+                    }
                 }
             }
             .padding()

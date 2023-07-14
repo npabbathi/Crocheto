@@ -7,7 +7,7 @@
 
 import Foundation
 
-public class Stitch: Identifiable {
+public class Stitch: Identifiable, Equatable {
     
     public var id : UUID?
     private var name : String
@@ -32,5 +32,9 @@ public class Stitch: Identifiable {
     
     public func getincreaseAmount() -> Int {
         return increaseAmount
+    }
+    
+    public static func == (lhs: Stitch, rhs: Stitch) -> Bool {
+        return lhs.name == rhs.name
     }
 }
