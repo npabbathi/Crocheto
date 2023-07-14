@@ -40,6 +40,8 @@ struct PatternBuilder: View {
     
     @State private var selectedStitchType = "Chain"
     @State private var selectedNumStitches = 1
+    @State private var selectedRepeat = 1
+    @State private var grouped = false
     
     
     private var stitchTypes = ["Chain", "Single Crochet", "Double Crochet", "Increase", "Decrease"]
@@ -74,13 +76,24 @@ struct PatternBuilder: View {
                 Divider()
                     .overlay(CrochetoColors.darkGreen)
                 
-                Text("Current Row:")
+                HStack {
+                    Text("Current Row:")
+                    Spacer()
+                    Button("+ row") {
+                        if currentStitches.count != 0 {
+                            rows.append(Row(stitches: currentStitches))
+                            currentStitches = [Stitch]()
+                            numRows += 1
+                        }
+                    }
+                    .buttonStyle(.bordered)
+                }
                 Text(currentSitchesPattern)
                 
                 HStack {
                     Picker("stitch types", selection: $selectedStitchType) {
                         ForEach(stitchTypes, id: \.self) { stitchType in
-                            Text(stitchType)
+                            Text(grouped ? stitchTypeAbbreviations[stitchType]! : stitchType)
                         }
                     }
                     .pickerStyle(.wheel)
@@ -91,25 +104,28 @@ struct PatternBuilder: View {
                         }
                     }
                     .pickerStyle(.wheel)
+                    
+                    if grouped {
+                        Picker("repeat", selection: $selectedRepeat) {
+                            ForEach(0 ..< 100) { num in
+                                Text(String(num))
+                            }
+                        }
+                        .pickerStyle(.wheel)
+                    }
                 }
                 HStack {
-                    Button("add stitch") {
+                    Button("+ stitch") {
                         for _ in 0 ..< selectedNumStitches {
                             currentStitches.append(Stitch(name: selectedStitchType, abbreviation: stitchTypeAbbreviations[selectedStitchType] ?? "??", increaseAmount: stitchTypeCounts[selectedStitchType] ?? 0))
                         }
                     }
                     .buttonStyle(.bordered)
                     
-                    Button("add row") {
-                        if currentStitches.count != 0 {
-                            rows.append(Row(stitches: currentStitches))
-                            currentStitches = [Stitch]()
-                            numRows += 1
-                        }
-                    }
-                    .buttonStyle(.bordered)
+                    Toggle("Group stitches?", isOn: $grouped)
                 }
             }
+            .padding()
         }
     }
 }
