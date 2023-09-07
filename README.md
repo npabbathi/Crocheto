@@ -4,7 +4,7 @@ This repository stores my personal project that started summer 2023. I'm working
 ## Crocheto
 Crocheto is a crochet app that allows crocheters to create, store, and share crochet patterns! 
 
-###MVP and progress points
+### MVP and progress points
 - Pattern builder (almost done)
 - Project gallery (restarting)
 - Pattern tracker (not started)
