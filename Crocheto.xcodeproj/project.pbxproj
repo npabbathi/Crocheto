@@ -8,14 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		5B5774252A6197A400BB299E /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5774242A6197A400BB299E /* Group.swift */; };
+		5B5E6D072AA971270005D101 /* PatternBuilder-ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5E6D062AA971270005D101 /* PatternBuilder-ViewModel.swift */; };
 		5B69004C2A1C6A91001CDD5B /* CrochetoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B69004B2A1C6A91001CDD5B /* CrochetoApp.swift */; };
-		5B69004E2A1C6A91001CDD5B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B69004D2A1C6A91001CDD5B /* ContentView.swift */; };
 		5B6900502A1C6A92001CDD5B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5B69004F2A1C6A92001CDD5B /* Assets.xcassets */; };
 		5B6900532A1C6A92001CDD5B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5B6900522A1C6A92001CDD5B /* Preview Assets.xcassets */; };
 		5B6900552A1C6A92001CDD5B /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6900542A1C6A92001CDD5B /* Persistence.swift */; };
 		5B6900582A1C6A92001CDD5B /* Crocheto.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5B6900562A1C6A92001CDD5B /* Crocheto.xcdatamodeld */; };
 		5B69005F2A1C8233001CDD5B /* CrochetoColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B69005E2A1C8233001CDD5B /* CrochetoColors.swift */; };
-		5B6900612A1C8DEA001CDD5B /* newGalleryProject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6900602A1C8DEA001CDD5B /* newGalleryProject.swift */; };
 		5BC113182A4A6A9A00776F50 /* PatternBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC113172A4A6A9A00776F50 /* PatternBuilder.swift */; };
 		5BC1131A2A4A71A200776F50 /* Stitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC113192A4A71A200776F50 /* Stitch.swift */; };
 		5BC1131C2A4A77D000776F50 /* Row.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC1131B2A4A77D000776F50 /* Row.swift */; };
@@ -23,15 +22,14 @@
 
 /* Begin PBXFileReference section */
 		5B5774242A6197A400BB299E /* Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
+		5B5E6D062AA971270005D101 /* PatternBuilder-ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PatternBuilder-ViewModel.swift"; sourceTree = "<group>"; };
 		5B6900482A1C6A91001CDD5B /* Crocheto.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Crocheto.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B69004B2A1C6A91001CDD5B /* CrochetoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrochetoApp.swift; sourceTree = "<group>"; };
-		5B69004D2A1C6A91001CDD5B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		5B69004F2A1C6A92001CDD5B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5B6900522A1C6A92001CDD5B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		5B6900542A1C6A92001CDD5B /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		5B6900572A1C6A92001CDD5B /* Crocheto.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Crocheto.xcdatamodel; sourceTree = "<group>"; };
 		5B69005E2A1C8233001CDD5B /* CrochetoColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrochetoColors.swift; sourceTree = "<group>"; };
-		5B6900602A1C8DEA001CDD5B /* newGalleryProject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = newGalleryProject.swift; sourceTree = "<group>"; };
 		5BC113172A4A6A9A00776F50 /* PatternBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatternBuilder.swift; sourceTree = "<group>"; };
 		5BC113192A4A71A200776F50 /* Stitch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stitch.swift; sourceTree = "<group>"; };
 		5BC1131B2A4A77D000776F50 /* Row.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Row.swift; sourceTree = "<group>"; };
@@ -69,12 +67,11 @@
 			children = (
 				5B69005E2A1C8233001CDD5B /* CrochetoColors.swift */,
 				5BC113172A4A6A9A00776F50 /* PatternBuilder.swift */,
+				5B5E6D062AA971270005D101 /* PatternBuilder-ViewModel.swift */,
 				5BC1131B2A4A77D000776F50 /* Row.swift */,
 				5B5774242A6197A400BB299E /* Group.swift */,
 				5BC113192A4A71A200776F50 /* Stitch.swift */,
 				5B69004B2A1C6A91001CDD5B /* CrochetoApp.swift */,
-				5B69004D2A1C6A91001CDD5B /* ContentView.swift */,
-				5B6900602A1C8DEA001CDD5B /* newGalleryProject.swift */,
 				5B69004F2A1C6A92001CDD5B /* Assets.xcassets */,
 				5B6900542A1C6A92001CDD5B /* Persistence.swift */,
 				5B6900562A1C6A92001CDD5B /* Crocheto.xcdatamodeld */,
@@ -166,11 +163,10 @@
 				5BC113182A4A6A9A00776F50 /* PatternBuilder.swift in Sources */,
 				5B5774252A6197A400BB299E /* Group.swift in Sources */,
 				5B69005F2A1C8233001CDD5B /* CrochetoColors.swift in Sources */,
+				5B5E6D072AA971270005D101 /* PatternBuilder-ViewModel.swift in Sources */,
 				5B6900552A1C6A92001CDD5B /* Persistence.swift in Sources */,
-				5B69004E2A1C6A91001CDD5B /* ContentView.swift in Sources */,
 				5B69004C2A1C6A91001CDD5B /* CrochetoApp.swift in Sources */,
 				5BC1131A2A4A71A200776F50 /* Stitch.swift in Sources */,
-				5B6900612A1C8DEA001CDD5B /* newGalleryProject.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

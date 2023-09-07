@@ -11,24 +11,21 @@ public class Group : Identifiable {
     public var id : UUID
     private var groupStitches : [Stitch]
     private var numRepeat : Int
-    //private var numStitches : Int
     
     init(groupStitchs : [Stitch], numRepeat : Int) {
         self.id = UUID()
         self.groupStitches = groupStitchs
         self.numRepeat = numRepeat
-        //self.numStitches = groupStitchs.count * numRepeat // CALCULATIONS NOT CORRECT YET
     }
     
     init() {
         self.id = UUID()
         self.groupStitches = [Stitch]()
         self.numRepeat = 0
-        //self.numStitches = 0
     }
     
     public func toString() -> String {
-        var groupPattern = groupStitches.count == 1 ? "" : "("
+        var groupPattern = "(" //groupStitches.count == 1 ? "" : "("
         
         var currentStreak = 1
         if groupStitches.count != 0 {
@@ -50,7 +47,7 @@ public class Group : Identifiable {
                 groupPattern += "\(groupStitches[groupStitches.count - 1].getAbbreviation())"
             }
         }
-        return groupPattern + (groupStitches.count == 1 ? "" : ") x\(numRepeat)")
+        return groupPattern + ") x\(numRepeat)" //(groupStitches.count == 1 ? "" : ") x\(numRepeat)")
         
     }
     
@@ -69,5 +66,17 @@ public class Group : Identifiable {
     
     public func getRepeats() -> Int {
         return numRepeat
+    }
+    
+    public func equalStitches(other: Group) -> Bool {
+        if groupStitches.count != other.groupStitches.count {
+            return false
+        }
+        for i in 0 ..< groupStitches.count {
+            if groupStitches[i] != other.groupStitches[i] {
+                return false
+            }
+        }
+        return true
     }
 }

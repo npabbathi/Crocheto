@@ -13,7 +13,7 @@ struct CrochetoApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            PatternBuilder()
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
     }

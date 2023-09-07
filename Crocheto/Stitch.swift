@@ -12,14 +12,12 @@ public class Stitch: Identifiable, Equatable {
     public var id : UUID?
     private var name : String
     private var abbreviation : String
-    private var increaseAmount : Int
     //private var color : String
     
-    init(name : String, abbreviation : String, increaseAmount : Int) {
+    init(name : String, abbreviation : String) {
         self.id = UUID()
         self.name = name
         self.abbreviation = abbreviation
-        self.increaseAmount = increaseAmount
     }
     
     public func getName() -> String {
@@ -28,10 +26,6 @@ public class Stitch: Identifiable, Equatable {
     
     public func getAbbreviation() -> String {
         return abbreviation
-    }
-    
-    public func getincreaseAmount() -> Int {
-        return increaseAmount
     }
     
     public static func == (lhs: Stitch, rhs: Stitch) -> Bool {
