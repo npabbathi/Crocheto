@@ -18,6 +18,8 @@
 		5BC113182A4A6A9A00776F50 /* PatternBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC113172A4A6A9A00776F50 /* PatternBuilder.swift */; };
 		5BC1131A2A4A71A200776F50 /* Stitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC113192A4A71A200776F50 /* Stitch.swift */; };
 		5BC1131C2A4A77D000776F50 /* Row.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC1131B2A4A77D000776F50 /* Row.swift */; };
+		5BF54E312B068E9300740D58 /* SharePatternView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF54E302B068E9300740D58 /* SharePatternView.swift */; };
+		5BF54E332B06903F00740D58 /* SharePatternView-ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF54E322B06903F00740D58 /* SharePatternView-ViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +35,8 @@
 		5BC113172A4A6A9A00776F50 /* PatternBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatternBuilder.swift; sourceTree = "<group>"; };
 		5BC113192A4A71A200776F50 /* Stitch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stitch.swift; sourceTree = "<group>"; };
 		5BC1131B2A4A77D000776F50 /* Row.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Row.swift; sourceTree = "<group>"; };
+		5BF54E302B068E9300740D58 /* SharePatternView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharePatternView.swift; sourceTree = "<group>"; };
+		5BF54E322B06903F00740D58 /* SharePatternView-ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SharePatternView-ViewModel.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +71,8 @@
 			children = (
 				5B69005E2A1C8233001CDD5B /* CrochetoColors.swift */,
 				5BC113172A4A6A9A00776F50 /* PatternBuilder.swift */,
+				5BF54E302B068E9300740D58 /* SharePatternView.swift */,
+				5BF54E322B06903F00740D58 /* SharePatternView-ViewModel.swift */,
 				5B5E6D062AA971270005D101 /* PatternBuilder-ViewModel.swift */,
 				5BC1131B2A4A77D000776F50 /* Row.swift */,
 				5B5774242A6197A400BB299E /* Group.swift */,
@@ -165,8 +171,10 @@
 				5B69005F2A1C8233001CDD5B /* CrochetoColors.swift in Sources */,
 				5B5E6D072AA971270005D101 /* PatternBuilder-ViewModel.swift in Sources */,
 				5B6900552A1C6A92001CDD5B /* Persistence.swift in Sources */,
+				5BF54E332B06903F00740D58 /* SharePatternView-ViewModel.swift in Sources */,
 				5B69004C2A1C6A91001CDD5B /* CrochetoApp.swift in Sources */,
 				5BC1131A2A4A71A200776F50 /* Stitch.swift in Sources */,
+				5BF54E312B068E9300740D58 /* SharePatternView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

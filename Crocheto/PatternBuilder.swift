@@ -11,87 +11,105 @@ struct PatternBuilder: View {
     
     @StateObject private var viewModel = ViewModel()
     
-    private let stitchTypes = ["Chain", "Single Crochet", "Double Crochet", "Increase", "Decrease"]
-    private let stitchTypeAbbreviations = ["Chain" : "ch",
-                                           "Single Crochet" : "sc",
-                                           "Double Crochet" : "dc",
-                                           "Increase" : "inc",
-                                           "Decrease" : "dec"]
-    
     var body: some View {
-        ZStack {
-            LinearGradient(colors: [CrochetoColors.lightGreen, CrochetoColors.white], startPoint: .top, endPoint: .bottom)
-                .ignoresSafeArea()
-            VStack {
-                //finished rows at the top of the screen
-                List {
-                    Section {
-                        Text("Rows: \(viewModel.numRows)")
-                    }
-                    ForEach(viewModel.rows) { row in
-                        Text(row.getPattern())
-                    }
-                }
-                .scrollContentBackground(.hidden)
-                
-                Divider()
-                    .overlay(CrochetoColors.darkGreen)
-                
-                //working row to be added to the top of the screen
-                HStack {
-                    Text("Current Row:")
-                    Spacer()
-                    Button("+ row") {
-                        viewModel.addRow()
-                    }
-                    .buttonStyle(.bordered)
-                }
-                Text(viewModel.getCurrentRowPattern())
-                if viewModel.grouped {
-                    Text(viewModel.getCurrentGroupPattern())
-                }
-                
-                HStack {
-                    Picker("stitch types", selection: $viewModel.selectedStitchType) {
-                        ForEach(stitchTypes, id: \.self) { stitchType in
-                            Text(viewModel.grouped ? stitchTypeAbbreviations[stitchType]! : stitchType)
+        NavigationStack {
+            ZStack {
+                LinearGradient(colors: [CrochetoColors.lightGreen, CrochetoColors.white], startPoint: .top, endPoint: .bottom)
+                    .ignoresSafeArea()
+                VStack {
+                    NavigationLink("share", destination: SharePatternView(rows: viewModel.rows))
+                        .foregroundColor(CrochetoColors.darkGreen)
+                        .buttonStyle(.bordered)
+                    
+                    //finished rows at the top of the screen
+                    List {
+                        Section {
+                            Text("Row count: \(viewModel.rows.count)")
+                        }
+                        
+                        ForEach(viewModel.rows.indices, id: \.self) { index in
+                            Text("Row \(index + 1): \(viewModel.rows[index].getPattern())")
+                        }
+                        .onDelete { indexSet in
+                            indexSet.forEach { i in
+                                viewModel.removeRow(i)
+                            }
                         }
                     }
-                    .pickerStyle(.wheel)
+                    .scrollContentBackground(.hidden)
+                    .cornerRadius(20)
                     
-                    Picker("number of stitches", selection: $viewModel.selectedNumStitches) {
-                        ForEach(0 ..< 100) { num in
-                            Text(String(num))
+                    Divider()
+                        .overlay(CrochetoColors.darkGreen)
+                    
+                    //crafting table area for the current row
+                    HStack {
+                        Text("Current Row:")
+                        Spacer()
+                        Button("+ row") {
+                            viewModel.addRow()
                         }
+                        .buttonStyle(.bordered)
+                        .tint(CrochetoColors.darkGreen)
                     }
-                    .pickerStyle(.wheel)
-                    
+                    Text(viewModel.getCurrentRowPattern())
                     if viewModel.grouped {
-                        Picker("repeat", selection: $viewModel.selectedRepeat) {
+                        Text(viewModel.getCurrentGroupPattern())
+                    }
+                    
+                    //wheels
+                    HStack {
+                        Picker("stitch types", selection: $viewModel.selectedStitchType) {
+                            ForEach(PatternBuilder.ViewModel.stitchTypeAbbreviations.sorted(by: <), id: \.key) { key, value in
+                                Text(viewModel.grouped ? PatternBuilder.ViewModel.stitchTypeAbbreviations[key]! : key)
+                            }
+                        }
+                        .pickerStyle(.wheel)
+                        
+                        Picker("number of stitches", selection: $viewModel.selectedNumStitches) {
                             ForEach(0 ..< 100) { num in
                                 Text(String(num))
                             }
                         }
                         .pickerStyle(.wheel)
+                        
+                        if viewModel.grouped {
+                            Picker("repeat", selection: $viewModel.selectedRepeat) {
+                                ForEach(0 ..< 100) { num in
+                                    Text(String(num))
+                                }
+                            }
+                            .pickerStyle(.wheel)
+                        }
                     }
-                }
-                HStack {
-                    Button("+ stitch") {
-                        viewModel.addStitch(stitchTypeAbbreviations: stitchTypeAbbreviations)
-                    }
-                    .buttonStyle(.bordered)
                     
-                    Toggle("Group stitches?", isOn: $viewModel.grouped)
-                    
-                    if viewModel.grouped {
-                        Button("+ group") {
-                            viewModel.addGroup()
+                    HStack {
+                        Button("+ stitch") {
+                            viewModel.addStitch()
                         }
                         .buttonStyle(.bordered)
+                        .tint(CrochetoColors.darkGreen)
+                        
+                        Button("- stitch") {
+                            viewModel.removeStitch()
+                        }
+                        .buttonStyle(.bordered)
+                        .tint(CrochetoColors.green)
+                        
+                        Toggle(viewModel.grouped ? "" : "Group stitches?", isOn: $viewModel.grouped)
+                            .tint(Color.gray)
+                        
+                        if viewModel.grouped {
+                            Button("+ group") {
+                                viewModel.addGroup()
+                            }
+                            .buttonStyle(.bordered)
+                            .tint(CrochetoColors.darkGreen)
+                        }
                     }
                 }
+                .padding()
             }
-            .padding()
         }
     }
 }

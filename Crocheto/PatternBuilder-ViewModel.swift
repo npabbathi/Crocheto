@@ -9,24 +9,32 @@ import Foundation
 
 extension PatternBuilder {
     @MainActor class ViewModel: ObservableObject {
-        //TODO: private(set) encapsulation looking bad rn
+        //TODO: encapsulation bad rn, but these need to be read and write for the pickers?? how to make them private except for PatternBuilder?
         @Published var selectedStitchType = "Chain"
         @Published var selectedNumStitches = 1
         @Published var selectedRepeat = 1
         @Published var grouped = false
         
-        @Published var rows = [Row]()
-        @Published var numRows = 0
+        @Published private(set) var rows = [Row]()
         
-        @Published var currentRow = [Group]()
-        @Published var currentGroup = [Stitch]()
+        @Published private(set) var currentRow = [Group]()
+        @Published private(set) var currentGroup = [Stitch]()
+        
+        static let stitchTypeAbbreviations = ["Single Crochet" : "sc",
+                                              "Double Crochet" : "dc",
+                                              "Chain" : "ch",
+                                              "Increase" : "inc",
+                                              "Decrease" : "dec",
+                                              "Magic Ring" : "mr",
+                                              "Half Double Crochet" : "hdc",
+                                              "Triple crochet" : "tc",
+                                              "Bubble" : "bub"]
         
         /// Function to add the user's current working row to the list of total final rows
         func addRow() {
             if currentRow.count != 0 {
                 rows.append(Row(groups: currentRow))
                 currentRow = [Group]()
-                numRows += 1
             }
         }
         
@@ -34,18 +42,39 @@ extension PatternBuilder {
         func addGroup() {
             if currentGroup.count != 0 {
                 currentRow.append(Group(groupStitchs: currentGroup, numRepeat: selectedRepeat))
+                
+                //combines last groups if they are the same
+                if (currentRow.count > 1) {
+                    if (currentRow[currentRow.count - 1].equalStitches(other: currentRow[currentRow.count - 2])) {
+                        //increases repeat
+                        currentRow[currentRow.count - 2].incRepeats(currentRow[currentRow.count - 1].getRepeats())
+                        currentRow.remove(at: currentRow.count - 1)
+                    }
+                }
+                
                 currentGroup = [Stitch]()
                 grouped.toggle()
             }
         }
         
         /// Function to add the user's current number of stitches their current working row
-        func addStitch(stitchTypeAbbreviations : [String : String]) { //TODO: passing in a constant, uneeded parameter!!!
+        func addStitch() {
             for _ in 0 ..< selectedNumStitches {
-                currentGroup.append(Stitch(name: selectedStitchType, abbreviation: stitchTypeAbbreviations[selectedStitchType] ?? "??"))
+                currentGroup.append(Stitch(name: selectedStitchType, abbreviation: PatternBuilder.ViewModel.stitchTypeAbbreviations[selectedStitchType] ?? "??"))
+                
+                //if not editing a group, add faux groups (stitches)
                 if !grouped {
                     currentRow.append(Group(groupStitchs: currentGroup, numRepeat: 1))
                     currentGroup = [Stitch]()
+                }
+            }
+            
+            // combines the last stitches if they are the same
+            if currentRow.count > 1 {
+                if currentRow[currentRow.count - 1].equalStitches(other: currentRow[currentRow.count - 2]) {
+                    //increases repeat
+                    currentRow[currentRow.count - 2].incRepeats(currentRow[currentRow.count - 1].getRepeats())
+                    currentRow.remove(at: currentRow.count - 1)
                 }
             }
         }
@@ -54,14 +83,6 @@ extension PatternBuilder {
         /// - Returns: String representation of the current row
         func getCurrentRowPattern() -> String {
             var pattern = ""
-            
-            if currentRow.count > 1 { //TODO: combine if statements lol this style is horrible
-                if currentRow[currentRow.count - 1].equalStitches(other: currentRow[currentRow.count - 2]) {
-                    //increases repeat
-                    currentRow[currentRow.count - 2].incRepeats(currentRow[currentRow.count - 1].getRepeats())
-                    currentRow.remove(at: currentRow.count - 1)
-                }
-            }
             
             if currentRow.count > 0 {
                 for i in 0 ..< currentRow.count - 1 {
@@ -73,30 +94,41 @@ extension PatternBuilder {
             return "ROW: " + pattern
         }
         
+        
+        /// Function that returns a String version of the current Group pattern, used if the grouped toggle is turned on
+        /// - Returns: String representation of the current Group
         func getCurrentGroupPattern() -> String {
-            var groupPattern = "("//currentGroup.count == 1 ? "" : "("
-            
-            var currentStreak = 1
-            if currentGroup.count != 0 {
-                for i in 0 ..< currentGroup.count - 1 {
-                    if (currentGroup[i].getName() != currentGroup[i + 1].getName()) {
-                        if (currentStreak != 1) {
-                            groupPattern += "\(currentGroup[i].getAbbreviation()) \(currentStreak), "
-                        } else {
-                            groupPattern += "\(currentGroup[i].getAbbreviation()), "
-                        }
-                        currentStreak = 1
-                    } else {
-                        currentStreak += 1
-                    }
-                }
-                if (currentStreak != 1) {
-                    groupPattern += "\(currentGroup[currentGroup.count - 1].getAbbreviation()) \(currentStreak)"
-                } else {
-                    groupPattern += "\(currentGroup[currentGroup.count - 1].getAbbreviation())"
+            //TODO: icky?? unnecessary objects! change this up
+            return Group(groupStitchs: currentGroup, numRepeat: selectedRepeat).toString()
+        }
+        
+        
+        /// remove the last stitch in the current working row
+        func removeStitch() {
+            //remove from working group if user is editing a group
+            if (grouped && currentGroup.count > 0) {
+                currentGroup.removeLast();
+                
+            //remove from the current working row aka array of groups
+            } else if (currentRow.count > 0) {
+                let lastGroup = currentRow[currentRow.count - 1]
+                
+                //remove the last stitch in the group
+                if (lastGroup.getStitches().count > 1) {
+                    lastGroup.removeLastStitch()
+                    
+                //remove the entire group from row since it is empty
+                } else if (lastGroup.getStitches().count == 1) {
+                    currentRow.removeLast()
                 }
             }
-            return groupPattern + ") x\(selectedRepeat)" //(currentGroup.count == 1 ? "" : ") x\(selectedRepeat)")
+        }
+        
+        
+        /// removed a row at a index
+        /// - Parameter i: index to remove from
+        func removeRow(_ i : Int) {
+            rows.remove(at: i)
         }
     }
 }
