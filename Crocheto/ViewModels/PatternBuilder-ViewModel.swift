@@ -71,10 +71,13 @@ extension PatternBuilder {
             
             // combines the last stitches if they are the same
             if currentRow.count > 1 {
-                if currentRow[currentRow.count - 1].equalStitches(other: currentRow[currentRow.count - 2]) {
-                    //increases repeat
-                    currentRow[currentRow.count - 2].incRepeats(currentRow[currentRow.count - 1].getRepeats())
-                    currentRow.remove(at: currentRow.count - 1)
+                
+                for i in stride(from: currentRow.count - 1, to: 0, by: -1) {
+                    if currentRow[i].equalStitches(other: currentRow[i - 1]) {
+                        //increases repeat
+                        currentRow[i - 1].incRepeats(currentRow[i].getRepeats())
+                        currentRow.remove(at: i)
+                    }
                 }
             }
         }
