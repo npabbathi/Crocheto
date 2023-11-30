@@ -7,14 +7,26 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5B566FE42B17F0AB000C655A /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 5B566FE32B17F0AB000C655A /* FirebaseAnalytics */; };
+		5B566FE62B17F0AB000C655A /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 5B566FE52B17F0AB000C655A /* FirebaseAuth */; };
+		5B566FE82B17F0AB000C655A /* FirebaseAuthCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = 5B566FE72B17F0AB000C655A /* FirebaseAuthCombine-Community */; };
+		5B566FEA2B17F0AB000C655A /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 5B566FE92B17F0AB000C655A /* FirebaseDatabase */; };
+		5B566FEC2B17F0AB000C655A /* FirebaseDatabaseSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 5B566FEB2B17F0AB000C655A /* FirebaseDatabaseSwift */; };
+		5B566FEE2B17F0AB000C655A /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 5B566FED2B17F0AB000C655A /* FirebaseFirestore */; };
+		5B566FF02B17F0AB000C655A /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 5B566FEF2B17F0AB000C655A /* FirebaseFirestoreSwift */; };
+		5B566FF22B17F102000C655A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B566FF12B17F102000C655A /* User.swift */; };
+		5B566FF62B17F912000C655A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5B566FF52B17F911000C655A /* GoogleService-Info.plist */; };
+		5B566FF82B17FAB1000C655A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B566FF72B17FAB1000C655A /* ContentView.swift */; };
 		5B5774252A6197A400BB299E /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5774242A6197A400BB299E /* Group.swift */; };
 		5B5E6D072AA971270005D101 /* PatternBuilder-ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5E6D062AA971270005D101 /* PatternBuilder-ViewModel.swift */; };
 		5B69004C2A1C6A91001CDD5B /* CrochetoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B69004B2A1C6A91001CDD5B /* CrochetoApp.swift */; };
 		5B6900502A1C6A92001CDD5B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5B69004F2A1C6A92001CDD5B /* Assets.xcassets */; };
 		5B6900532A1C6A92001CDD5B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5B6900522A1C6A92001CDD5B /* Preview Assets.xcassets */; };
-		5B6900552A1C6A92001CDD5B /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6900542A1C6A92001CDD5B /* Persistence.swift */; };
-		5B6900582A1C6A92001CDD5B /* Crocheto.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5B6900562A1C6A92001CDD5B /* Crocheto.xcdatamodeld */; };
 		5B69005F2A1C8233001CDD5B /* CrochetoColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B69005E2A1C8233001CDD5B /* CrochetoColors.swift */; };
+		5BB960AB2B17D68300ACF89A /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB960AA2B17D68300ACF89A /* LoginView.swift */; };
+		5BB960AD2B17D6FF00ACF89A /* SignupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB960AC2B17D6FF00ACF89A /* SignupView.swift */; };
+		5BB960C12B17E61900ACF89A /* Auth-ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB960C02B17E61900ACF89A /* Auth-ViewModel.swift */; };
+		5BB960C32B17EE5600ACF89A /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB960C22B17EE5600ACF89A /* ProfileView.swift */; };
 		5BC113182A4A6A9A00776F50 /* PatternBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC113172A4A6A9A00776F50 /* PatternBuilder.swift */; };
 		5BC1131A2A4A71A200776F50 /* Stitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC113192A4A71A200776F50 /* Stitch.swift */; };
 		5BC1131C2A4A77D000776F50 /* Row.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC1131B2A4A77D000776F50 /* Row.swift */; };
@@ -23,19 +35,24 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5B566FF12B17F102000C655A /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		5B566FF52B17F911000C655A /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
+		5B566FF72B17FAB1000C655A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		5B5774242A6197A400BB299E /* Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
 		5B5E6D062AA971270005D101 /* PatternBuilder-ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PatternBuilder-ViewModel.swift"; sourceTree = "<group>"; };
 		5B6900482A1C6A91001CDD5B /* Crocheto.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Crocheto.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B69004B2A1C6A91001CDD5B /* CrochetoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrochetoApp.swift; sourceTree = "<group>"; };
 		5B69004F2A1C6A92001CDD5B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5B6900522A1C6A92001CDD5B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		5B6900542A1C6A92001CDD5B /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
-		5B6900572A1C6A92001CDD5B /* Crocheto.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Crocheto.xcdatamodel; sourceTree = "<group>"; };
 		5B69005E2A1C8233001CDD5B /* CrochetoColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrochetoColors.swift; sourceTree = "<group>"; };
+		5BB960AA2B17D68300ACF89A /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		5BB960AC2B17D6FF00ACF89A /* SignupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupView.swift; sourceTree = "<group>"; };
+		5BB960C02B17E61900ACF89A /* Auth-ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Auth-ViewModel.swift"; sourceTree = "<group>"; };
+		5BB960C22B17EE5600ACF89A /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		5BC113172A4A6A9A00776F50 /* PatternBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatternBuilder.swift; sourceTree = "<group>"; };
 		5BC113192A4A71A200776F50 /* Stitch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stitch.swift; sourceTree = "<group>"; };
 		5BC1131B2A4A77D000776F50 /* Row.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Row.swift; sourceTree = "<group>"; };
-		5BF54E302B068E9300740D58 /* SharePatternView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharePatternView.swift; sourceTree = "<group>"; };
+		5BF54E302B068E9300740D58 /* SharePatternView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharePatternView.swift; sourceTree = "<group>"; usesTabs = 0; };
 		5BF54E322B06903F00740D58 /* SharePatternView-ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SharePatternView-ViewModel.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -44,6 +61,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5B566FEC2B17F0AB000C655A /* FirebaseDatabaseSwift in Frameworks */,
+				5B566FE42B17F0AB000C655A /* FirebaseAnalytics in Frameworks */,
+				5B566FE82B17F0AB000C655A /* FirebaseAuthCombine-Community in Frameworks */,
+				5B566FF02B17F0AB000C655A /* FirebaseFirestoreSwift in Frameworks */,
+				5B566FEA2B17F0AB000C655A /* FirebaseDatabase in Frameworks */,
+				5B566FE62B17F0AB000C655A /* FirebaseAuth in Frameworks */,
+				5B566FEE2B17F0AB000C655A /* FirebaseFirestore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -71,12 +95,11 @@
 			children = (
 				5BB960A72B17D0D900ACF89A /* Views */,
 				5BB960A62B17D0C200ACF89A /* ViewModels */,
-				5BB960A52B17D07100ACF89A /* Pattern Classes */,
+				5BB960A52B17D07100ACF89A /* Classes */,
 				5B69004F2A1C6A92001CDD5B /* Assets.xcassets */,
 				5B69005E2A1C8233001CDD5B /* CrochetoColors.swift */,
 				5B69004B2A1C6A91001CDD5B /* CrochetoApp.swift */,
-				5B6900542A1C6A92001CDD5B /* Persistence.swift */,
-				5B6900562A1C6A92001CDD5B /* Crocheto.xcdatamodeld */,
+				5B566FF52B17F911000C655A /* GoogleService-Info.plist */,
 				5B6900512A1C6A92001CDD5B /* Preview Content */,
 			);
 			path = Crocheto;
@@ -90,14 +113,15 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		5BB960A52B17D07100ACF89A /* Pattern Classes */ = {
+		5BB960A52B17D07100ACF89A /* Classes */ = {
 			isa = PBXGroup;
 			children = (
 				5BC1131B2A4A77D000776F50 /* Row.swift */,
 				5B5774242A6197A400BB299E /* Group.swift */,
 				5BC113192A4A71A200776F50 /* Stitch.swift */,
+				5B566FF12B17F102000C655A /* User.swift */,
 			);
-			path = "Pattern Classes";
+			path = Classes;
 			sourceTree = "<group>";
 		};
 		5BB960A62B17D0C200ACF89A /* ViewModels */ = {
@@ -105,6 +129,7 @@
 			children = (
 				5BF54E322B06903F00740D58 /* SharePatternView-ViewModel.swift */,
 				5B5E6D062AA971270005D101 /* PatternBuilder-ViewModel.swift */,
+				5BB960C02B17E61900ACF89A /* Auth-ViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -114,6 +139,10 @@
 			children = (
 				5BC113172A4A6A9A00776F50 /* PatternBuilder.swift */,
 				5BF54E302B068E9300740D58 /* SharePatternView.swift */,
+				5BB960AA2B17D68300ACF89A /* LoginView.swift */,
+				5BB960AC2B17D6FF00ACF89A /* SignupView.swift */,
+				5BB960C22B17EE5600ACF89A /* ProfileView.swift */,
+				5B566FF72B17FAB1000C655A /* ContentView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -134,6 +163,15 @@
 			dependencies = (
 			);
 			name = Crocheto;
+			packageProductDependencies = (
+				5B566FE32B17F0AB000C655A /* FirebaseAnalytics */,
+				5B566FE52B17F0AB000C655A /* FirebaseAuth */,
+				5B566FE72B17F0AB000C655A /* FirebaseAuthCombine-Community */,
+				5B566FE92B17F0AB000C655A /* FirebaseDatabase */,
+				5B566FEB2B17F0AB000C655A /* FirebaseDatabaseSwift */,
+				5B566FED2B17F0AB000C655A /* FirebaseFirestore */,
+				5B566FEF2B17F0AB000C655A /* FirebaseFirestoreSwift */,
+			);
 			productName = Crocheto;
 			productReference = 5B6900482A1C6A91001CDD5B /* Crocheto.app */;
 			productType = "com.apple.product-type.application";
@@ -162,6 +200,9 @@
 				Base,
 			);
 			mainGroup = 5B69003F2A1C6A91001CDD5B;
+			packageReferences = (
+				5B566FE22B17F0AB000C655A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			productRefGroup = 5B6900492A1C6A91001CDD5B /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -178,6 +219,7 @@
 			files = (
 				5B6900532A1C6A92001CDD5B /* Preview Assets.xcassets in Resources */,
 				5B6900502A1C6A92001CDD5B /* Assets.xcassets in Resources */,
+				5B566FF62B17F912000C655A /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -188,16 +230,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5B6900582A1C6A92001CDD5B /* Crocheto.xcdatamodeld in Sources */,
 				5BC1131C2A4A77D000776F50 /* Row.swift in Sources */,
 				5BC113182A4A6A9A00776F50 /* PatternBuilder.swift in Sources */,
 				5B5774252A6197A400BB299E /* Group.swift in Sources */,
+				5B566FF22B17F102000C655A /* User.swift in Sources */,
 				5B69005F2A1C8233001CDD5B /* CrochetoColors.swift in Sources */,
 				5B5E6D072AA971270005D101 /* PatternBuilder-ViewModel.swift in Sources */,
-				5B6900552A1C6A92001CDD5B /* Persistence.swift in Sources */,
+				5B566FF82B17FAB1000C655A /* ContentView.swift in Sources */,
+				5BB960C12B17E61900ACF89A /* Auth-ViewModel.swift in Sources */,
+				5BB960C32B17EE5600ACF89A /* ProfileView.swift in Sources */,
+				5BB960AB2B17D68300ACF89A /* LoginView.swift in Sources */,
 				5BF54E332B06903F00740D58 /* SharePatternView-ViewModel.swift in Sources */,
 				5B69004C2A1C6A91001CDD5B /* CrochetoApp.swift in Sources */,
 				5BC1131A2A4A71A200776F50 /* Stitch.swift in Sources */,
+				5BB960AD2B17D6FF00ACF89A /* SignupView.swift in Sources */,
 				5BF54E312B068E9300740D58 /* SharePatternView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -400,18 +446,54 @@
 		};
 /* End XCConfigurationList section */
 
-/* Begin XCVersionGroup section */
-		5B6900562A1C6A92001CDD5B /* Crocheto.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				5B6900572A1C6A92001CDD5B /* Crocheto.xcdatamodel */,
-			);
-			currentVersion = 5B6900572A1C6A92001CDD5B /* Crocheto.xcdatamodel */;
-			path = Crocheto.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
+/* Begin XCRemoteSwiftPackageReference section */
+		5B566FE22B17F0AB000C655A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.0.0;
+			};
 		};
-/* End XCVersionGroup section */
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		5B566FE32B17F0AB000C655A /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5B566FE22B17F0AB000C655A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		5B566FE52B17F0AB000C655A /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5B566FE22B17F0AB000C655A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		5B566FE72B17F0AB000C655A /* FirebaseAuthCombine-Community */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5B566FE22B17F0AB000C655A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = "FirebaseAuthCombine-Community";
+		};
+		5B566FE92B17F0AB000C655A /* FirebaseDatabase */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5B566FE22B17F0AB000C655A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseDatabase;
+		};
+		5B566FEB2B17F0AB000C655A /* FirebaseDatabaseSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5B566FE22B17F0AB000C655A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseDatabaseSwift;
+		};
+		5B566FED2B17F0AB000C655A /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5B566FE22B17F0AB000C655A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+		5B566FEF2B17F0AB000C655A /* FirebaseFirestoreSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5B566FE22B17F0AB000C655A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestoreSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 5B6900402A1C6A91001CDD5B /* Project object */;
 }

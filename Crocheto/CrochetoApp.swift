@@ -6,15 +6,20 @@
 //
 
 import SwiftUI
+import Firebase
 
 @main
 struct CrochetoApp: App {
-    let persistenceController = PersistenceController.shared
+    @StateObject var viewModel = AuthViewModel()
+
+    init() {
+        FirebaseApp.configure()
+    }
 
     var body: some Scene {
         WindowGroup {
-            PatternBuilder()
-                .environment(\.managedObjectContext, persistenceController.container.viewContext)
+            ContentView()
+                .environmentObject(viewModel)
         }
     }
 }

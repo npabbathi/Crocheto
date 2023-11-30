@@ -18,7 +18,7 @@ struct PatternBuilder: View {
                     .ignoresSafeArea()
                 VStack {
                     NavigationLink("share", destination: SharePatternView(rows: viewModel.rows))
-                        .foregroundColor(CrochetoColors.darkGreen)
+                        .tint(CrochetoColors.darkGreen)
                         .buttonStyle(.bordered)
                     
                     //finished rows at the top of the screen
@@ -111,6 +111,7 @@ struct PatternBuilder: View {
                 .padding()
             }
         }
+        .tint(CrochetoColors.brown)
     }
 }
 
