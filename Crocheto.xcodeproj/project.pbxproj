@@ -17,6 +17,7 @@
 		5B566FF22B17F102000C655A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B566FF12B17F102000C655A /* User.swift */; };
 		5B566FF62B17F912000C655A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5B566FF52B17F911000C655A /* GoogleService-Info.plist */; };
 		5B566FF82B17FAB1000C655A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B566FF72B17FAB1000C655A /* ContentView.swift */; };
+		5B566FFD2B183F24000C655A /* TabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B566FFC2B183F24000C655A /* TabView.swift */; };
 		5B5774252A6197A400BB299E /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5774242A6197A400BB299E /* Group.swift */; };
 		5B5E6D072AA971270005D101 /* PatternBuilder-ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5E6D062AA971270005D101 /* PatternBuilder-ViewModel.swift */; };
 		5B69004C2A1C6A91001CDD5B /* CrochetoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B69004B2A1C6A91001CDD5B /* CrochetoApp.swift */; };
@@ -38,6 +39,7 @@
 		5B566FF12B17F102000C655A /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		5B566FF52B17F911000C655A /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		5B566FF72B17FAB1000C655A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		5B566FFC2B183F24000C655A /* TabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabView.swift; sourceTree = "<group>"; };
 		5B5774242A6197A400BB299E /* Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
 		5B5E6D062AA971270005D101 /* PatternBuilder-ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PatternBuilder-ViewModel.swift"; sourceTree = "<group>"; };
 		5B6900482A1C6A91001CDD5B /* Crocheto.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Crocheto.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -143,6 +145,7 @@
 				5BB960AC2B17D6FF00ACF89A /* SignupView.swift */,
 				5BB960C22B17EE5600ACF89A /* ProfileView.swift */,
 				5B566FF72B17FAB1000C655A /* ContentView.swift */,
+				5B566FFC2B183F24000C655A /* TabView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -240,6 +243,7 @@
 				5BB960C12B17E61900ACF89A /* Auth-ViewModel.swift in Sources */,
 				5BB960C32B17EE5600ACF89A /* ProfileView.swift in Sources */,
 				5BB960AB2B17D68300ACF89A /* LoginView.swift in Sources */,
+				5B566FFD2B183F24000C655A /* TabView.swift in Sources */,
 				5BF54E332B06903F00740D58 /* SharePatternView-ViewModel.swift in Sources */,
 				5B69004C2A1C6A91001CDD5B /* CrochetoApp.swift in Sources */,
 				5BC1131A2A4A71A200776F50 /* Stitch.swift in Sources */,

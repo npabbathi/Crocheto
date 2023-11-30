@@ -13,7 +13,7 @@ struct ContentView: View {
     var body: some View {
         SwiftUI.Group {
             if (viewModel.userSession != nil) {
-                PatternBuilder() //Tab view
+                TabView() //Tab view
             } else if (viewModel.userSession == nil) {
                 LoginView()
             } else {
